@@ -2,6 +2,7 @@ package com.survivingcodingbootcamp.blog.integration;
 
 import com.survivingcodingbootcamp.blog.model.Post;
 import com.survivingcodingbootcamp.blog.model.Topic;
+import com.survivingcodingbootcamp.blog.repository.HashtagRepository;
 import com.survivingcodingbootcamp.blog.repository.PostRepository;
 import com.survivingcodingbootcamp.blog.repository.TopicRepository;
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,8 @@ public class WebMvcLayerTest {
     private TopicRepository topicRepo;
     @MockBean
     private PostRepository postRepo;
+    @MockBean
+    private HashtagRepository hashtagRepo;
 
     @Test
     public void shouldReceiveOKAndViewOfHomeTemplateFromHomeEndpoint() throws Exception {
@@ -50,7 +53,7 @@ public class WebMvcLayerTest {
     @Test
     public void shouldReceiveOkAndViewOfPostTemplateFromSinglePostEndpoint() throws Exception {
         Topic testTopic = new Topic("Test Topic");
-        Post testPost = new Post("Test Post", testTopic, "Sample content.");
+        Post testPost = new Post("Test Post", testTopic, "J Linwood", "Sample content.");
         Optional<Post> testOptional = Optional.of(testPost);
         when(postRepo.findById(1l)).thenReturn(testOptional);
         mockMvc.perform(get("/posts/1"))

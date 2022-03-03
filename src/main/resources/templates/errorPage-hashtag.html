@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="icon" href="/assets/icon.png">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+</head>
+
+<body>
+<div class="container">
+    <header th:insert="Fragments.html :: header"></header>
+    <main class="main-content">
+        <h2 class="errorTitle">Alert</h2>
+        <p class="welcome"><span style="color:red ">You cannot submit an empty hashtag for a post.</span></p>
+    </main>
+</div>
+
+</body>
+</html>

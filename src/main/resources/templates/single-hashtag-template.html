@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="'List of '+${theHashtag}">Document</title>
+<!--    <title>Post</title>-->
+    <link rel="icon" href="/assets/icon.png">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
+</head>
+<div class="container">
+    <header th:insert="Fragments.html :: header"></header>
+    <br>
+    <main class="main-content">
+        <section class="main-content__topics topics">
+            <h2 class="topics__title main-content__title" th:text="'All Post(s) With the ' + ${theHashtag}">All Posts With the Hashtag</h2>
+            <ul>
+                <li class="hashtaglist" th:each="currentPost : ${postsInHashtag.posts}"><a th:href="|/posts/${currentPost.id}|" th:text="'Post title: '+${currentPost.title}" ></a></li>
+            </ul>
+        </section>
+    </main>
+</div>
+
+<body>
+
+</body>
+</html>
