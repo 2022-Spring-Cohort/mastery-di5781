@@ -3,6 +3,7 @@ package com.survivingcodingbootcamp.blog.controller;
 import com.survivingcodingbootcamp.blog.model.Post;
 import com.survivingcodingbootcamp.blog.model.Topic;
 import com.survivingcodingbootcamp.blog.repository.PostRepository;
+import com.survivingcodingbootcamp.blog.repository.TopicRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
@@ -25,7 +26,8 @@ public class PostControllerTest {
     @BeforeEach
     void setUp() {
         PostRepository postRepo = mock(PostRepository.class);
-        underTest = new PostController(postRepo);
+        TopicRepository topicRepo = mock(TopicRepository.class);
+        underTest = new PostController(postRepo, topicRepo);
         model = mock(Model.class);
         testPost = mock(Post.class);
         Optional<Post> testOptional = Optional.of(testPost);

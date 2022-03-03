@@ -13,6 +13,19 @@
     display:flex;
     flex-direction: column;
 }
+.topic__title{
+    padding: 13px;
+}
+.post__title{
+    padding: 13px;
+}
+
+.post__content{
+   padding-left: 5px;
+}
+.postDate{
+    padding-left: 5px;
+}
 .welcome{
     padding: 10px;
 }

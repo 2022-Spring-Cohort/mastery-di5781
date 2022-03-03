@@ -12,22 +12,51 @@
 
 <body>
     <div class="container">
-        <header class="header">
-            <h1 class="header__title">Surviving Coding Boot Camp</h1>
-            <nav class="header__nav">
-                <div class="header__nav-item"><a href="/" class="header__nav-link">Home</a></div>
-                <div class="header__nav-item"><a href="/hashtags" class="header__nav-link">Hashtags</a></div>
-            </nav>
-        </header>
+        <header th:insert="Fragments.html :: header"></header>
         <main class="main-content">
             <section class="main-content__post post">
                 <h3 class="post__topic-title main-content__topic-title"><a th:text="${post.topic.name}" th:href="'/topics/'+${post.topic.id}" class="main-content__topic-link post__topic-link">Topic</a>
                     </h3>
                 <h2 th:text="${post.title}" class="post__title main-content__topic-title">Post Title</h2>
+                <p class="postDate" th:text="'Posted:  '+ ${postDateTime}"></p>
                 <p th:text="${post.content}" class="post__content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque blanditiis, aut quae fuga id quis ut. 
                     Eligendi necessitatibus blanditiis officia, odio deleniti natus molestiae fugiat ex quod vel aliquam illum.
                 </p>
+                <div>
+                    <ul>
+                        <li class="postCommentLine" th:each="theComment : ${post.postComments}" th:text="'*  ' + ${theComment}"></li>
+                    </ul>
+                </div>
+                <br>
+                <div>
+                    <form th:action="|/submitHashtag|" method="POST">
+                        <div class="AddHashtag">
+                            <h2>Add A Hashtag</h2>
+                            <p class="emptyHashtagInput" >(Duplicated hashtag will not add to the list.)</p>
+                            <label style="color: #84A98C">Hashtag: </label>
+                            <input class="inputText" type="text" name = "hashtagContent" placeholder="#GoodPost">
+                            <input type="hidden" name = "postId" th:value="${post.id}"> &nbsp; &nbsp;
+                            <button class="submitButtonHash" type="submit"><strong>Submit Hashtag</strong></button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <form th:action="|/submitComment|" method="POST">
+                        <input type="hidden" name = "postId" th:value="${post.id}">
+                        <div class="AddComment">
+                            <h2>Add A Comment</h2>
+                            <p class="emptyHashtagInput" >(Duplicated comment will not add to the list.)</p>
+                            <label style="color: #84A98C">Comment: </label>
+                            <textarea id="postComment" name="postComment" rows="3" cols="50" maxlength="150" placeholder="Good post"></textarea>
+                            <div>
+                                <br>
+                                <button class="submitButtonComment" type="submit"><strong>Submit Comment</strong></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </section>
+
         </main>
     </div>
 

@@ -5,31 +5,53 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title th:text="${topic.name}">Document</title>
-
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="/css/layout.css"/>
 </head>
 
 <body>
 <div class="container">
-    <header class="header">
-        <h1 class="header__title">Surviving Coding Boot Camp</h1>
-        <nav class="header__nav">
-            <div class="header__nav-item"><a href="/" class="header__nav-link">Home</a></div>
-            <div class="header__nav-item"><a href="/hashtags" class="header__nav-link">Hashtags</a></div>
-        </nav>
-    </header>
+    <header th:insert="Fragments.html :: header"></header>
     <main class="main-content">
         <section class="main-content__topic topic">
             <h2 th:text="${topic.name}" class="topic__title main-content__title">
                 Topic
             </h2>
             <nav class="main-content__nav posts__nav">
-                <div th:each="post: ${topic.posts}">
-                    <a th:text="${post.title}" th:href="'/posts/'+${post.id}" href="#"
-                       class="posts__nav-link"></a>
+                <div th:each="post: ${topic.posts}" class="postTitleCenter">
+                    <a  th:text="${post.title}" th:href="'/posts/'+${post.id}"  href="#"
+                        class="posts__nav-link" ></a>
                 </div>
             </nav>
+            <br>
+            <br>
+            <form th:action="|/posts/submitPost/${topicId}|" class="AddPost" method="POST">
+                <input type="hidden" name = "topicId" th:value="${topic.Id}">
+                <div class="postFields" >
+                    <h2>Add A New Post</h2>
+                    <p class="emptyTopicInput" >(Duplicated post title will not add to the list.)</p>
+                    <br>
+                    <div>
+                        <label style="color: #84A98C">Title: </label>
+                        <input type="text" name="postTitle" id="postTitle" placeholder="Type title name">
+                    </div>
+                    <br>
+                    <div>
+                        <label style="color: #84A98C">Author Name: </label>
+                        <input type="text" name = "author" id="author" placeholder="Type Author name">
+                    </div>
+                    <br>
+                    <div>
+                        <label style="color: #84A98C">Post Contents:</label>
+                        <textarea id="postContent" name="postContent" rows="4" cols="50" maxlength="200" placeholder="Type post content"></textarea>
+                    </div>
+                    <br>
+                    <div>
+                        <button class="submitButtonPost" type="submit"><strong>Submit Post</strong></button>
+                    </div>
+                </div>
+
+            </form>
         </section>
     </main>
 </div>

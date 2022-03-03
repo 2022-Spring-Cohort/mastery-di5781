@@ -14,13 +14,7 @@
 </head>
 <body>
 <div class="container">
-    <header class="header">
-        <h1 class="header__title">Surviving Coding Boot Camp</h1>
-        <nav class="header__nav">
-            <div class="header__nav-item"><a href="/" class="header__nav-link">Home</a></div>
-            <div class="header__nav-item"><a href="/hashtags" class="header__nav-link">Hashtags</a></div>
-        </nav>
-    </header>
+    <header th:insert="Fragments.html :: header"></header>
     <main class="main-content">
         <p class="welcome">Welcome to Surviving Coding Boot Camp, a blog dedicated to helping you get through boot camp and on to the
             other side.</p>
@@ -31,6 +25,19 @@
                    class="topics__nav-link"></a>
             </nav>
         </section>
+        <br>
+        <form th:action="|/topics/submitTopic|"  method="POST">
+            <div class="AddTopic">
+                <h2>Add A Topic</h2>
+                <p class="emptyTopicInput" >(Duplicated topic will not add to the list.)</p>
+                <label style="color: #84A98C">Topic: </label>
+                <input class="inputText" type="text" name = "topicName" placeholder="Type Topic Name">
+                <input type="hidden" name = "topicId" value="${topic.id}">&nbsp; &nbsp;
+                <button class="submitButtonHash" type="submit"><strong>Submit Topic</strong></button>
+
+            </div>
+
+        </form>
     </main>
     </div>
 </body>

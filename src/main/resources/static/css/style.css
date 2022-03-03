@@ -37,8 +37,85 @@ html{
 }
 
 a{
-    color: var(--dark-highlight); 
+    color: var(--dark-highlight);
+    padding-left: 21px;
 }
 a:hover{
     color: var(--light-highlight);
+}
+
+
+.hashtaglist{
+    list-style-type: none;
+}
+.AddHashtag{
+    padding-bottom: 2em;
+    text-align: center;
+}
+.submitButtonHash{
+    padding-top: 5px;
+    border-radius: 10px;
+    padding: 4px 7px 4px 7px;
+    background-color: #84A98C;
+    border-color: black;
+    color: #2F3E46;
+}
+.inputText{
+    height: 25px;
+}
+.errorTitle{
+    padding-left: 9px;
+}
+.postFields{
+    text-align: left;
+    padding-bottom: 2em;
+    padding-left: 7px;
+}
+.submitButtonPost{
+    border-radius: 10px;
+    padding: 4px 7px 4px 7px;
+    margin-left: 17em;
+    background-color: #84A98C;
+    border-color: black;
+    color: #2F3E46
+}
+.AddTopic{
+    text-align: left;
+    padding-bottom: 2em;
+    padding-left: 13px;
+}
+.submitButtonTopic{
+
+}
+.emptyTopicInput{
+    text-align: left;
+    padding-bottom: 2em;
+    padding-left: 17px;
+    font-size: small;
+    color: #84A98C;
+}
+.emptyHashtagInput{
+    font-size: small;
+    color: #84A98C;
+}
+.AddComment{
+    padding-bottom: 2em;
+    text-align: center;
+}
+.postCommentLine{
+    list-style-type: none;
+    padding-left: 1em;
+    color: #84A98C;
+    font-size: small;
+}
+.submitButtonComment{
+   padding-top: 5px;
+   border-radius: 10px;
+   padding: 4px 7px 4px 7px;
+   background-color: #84A98C;
+   border-color: black;
+   color: #2F3E46;
+}
+.posts__nav-link{
+    padding-left: 30px;
 }
